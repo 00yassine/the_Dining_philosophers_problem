@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:44:07 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/04/30 16:05:08 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:32:50 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 		single_philo(data);
 		free_all(data);
 	}
-	else if(data->nb_of_philos > 1)
+	else if (data->nb_of_philos > 1)
 		printf("done");
 	return (0);
 }

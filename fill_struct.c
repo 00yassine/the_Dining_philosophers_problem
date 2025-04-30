@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:06:34 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/04/30 16:02:30 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:35:38 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,30 @@ static int	ft_free_struct(t_data *data)
 	free(data->philos);
 	free(data->tid_arr);
 	return (1);
+}
+
+static int	init_philos(t_data *data)
+{
+	pthread_mutex_t		*mutex_arr;
+	int					i;
+
+	i = 0;
+	mutex_arr = malloc(sizeof(pthread_mutex_t) * data->nb_of_philos);
+	if (!mutex_arr)
+		return (ft_free_struct(data));
+	while (i < data->nb_of_philos)
+	{
+		pthread_mutex_init(&mutex_arr[i], NULL);
+		data->philos[i].id = i + 1;
+		data->philos[i].last_meal = 0;
+		data->philos[i].meals_count = 0;
+		data->philos[i].mutex = mutex_arr;
+		data->philos[i].data = data;
+		pthread_mutex_init(&data->philos[i].meal_prot, NULL);
+		pthread_mutex_init(&data->philos[i].count_prot, NULL);
+		i++;
+	}
+	return (0);
 }
 
 int	fill_struct(char **av, int ac, t_data *data)
@@ -42,28 +66,4 @@ int	fill_struct(char **av, int ac, t_data *data)
 	pthread_mutex_init(&data->m_death, NULL);
 	data->start_time = get_time();
 	return (init_philos(data));
-}
-
-int	init_philos(t_data *data)
-{
-	pthread_mutex_t		*mutex_arr;
-	int					i;
-
-	i = 0;
-	mutex_arr = malloc(sizeof(pthread_mutex_t) * data->nb_of_philos);
-	if (!mutex_arr)
-		return (ft_free_struct(data));
-	while (i < data->nb_of_philos)
-	{
-		pthread_mutex_init(&mutex_arr[i], NULL);
-		data->philos[i].id = i + 1;
-		data->philos[i].last_meal = 0;
-		data->philos[i].meals_count = 0;
-		data->philos[i].mutex = mutex_arr;
-		data->philos[i].data = data;
-		pthread_mutex_init(&data->philos[i].meal_prot, NULL);
-		pthread_mutex_init(&data->philos[i].count_prot, NULL);
-		i++;
-	}
-	return (0);
 }
