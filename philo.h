@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:44:50 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/04/30 14:00:12 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:00:18 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,8 @@ int							print_error(char *str);
 int							ft_atoi(const char *str);
 long int					get_time(void);
 int							fill_struct(char **av, int ac, t_data *data);
+void						print_status(t_philo *philo, char *str);
+void						ft_usleep(long int time);
+int							init_philos(t_data *data);
 
 #endif

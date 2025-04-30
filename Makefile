@@ -1,5 +1,5 @@
 NAME = philo
-src = main.c check_arguments.c ft_atoi.c fill_struct.c get_time.c
+src = main.c check_arguments.c ft_atoi.c fill_struct.c get_time.c functions.c
 objf = $(src:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 

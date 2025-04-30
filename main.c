@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:44:07 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/04/30 15:51:57 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:05:08 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	single_philo(t_data *data)
 {
-	print_status(data->philos[0], "has taken a fork");
+	print_status(&data->philos[0], "has taken a fork\n");
 	ft_usleep(data->time_to_die);
-	print_status(data->philos[0], "is dead");
+	print_status(&data->philos[0], "is dead\n");
 }
 
 int	free_data(t_data *data)
@@ -59,5 +59,7 @@ int	main(int ac, char **av)
 		single_philo(data);
 		free_all(data);
 	}
+	else if(data->nb_of_philos > 1)
+		printf("done");
 	return (0);
 }

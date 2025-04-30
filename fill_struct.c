@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:06:34 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/04/30 13:59:56 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:02:30 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	init_philos(t_data *data)
 		data->philos[i].meals_count = 0;
 		data->philos[i].mutex = mutex_arr;
 		data->philos[i].data = data;
-		pthread_mutex_init(&data->philos[i].meals_count, NULL);
+		pthread_mutex_init(&data->philos[i].meal_prot, NULL);
 		pthread_mutex_init(&data->philos[i].count_prot, NULL);
 		i++;
 	}
