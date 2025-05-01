@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 15:13:26 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/01 14:28:47 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:33:46 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	check_meals(t_data *data)
 		if (i == data->nb_of_philos)
 		{
 			pthread_mutex_lock(&data->m_death);
-			data->is_dead;
+			data->is_dead = 0;
 			pthread_mutex_unlock(&data->m_death);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:44:07 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/04/30 17:39:20 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:33:18 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 		single_philo(data);
 		free_all(data);
 	}
-	else if (launch_thread(data))
+	else if (launch_threads(data))
 	{
 		free_all(data);
 		return (1);
