@@ -6,19 +6,19 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 15:13:26 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/01 14:33:46 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:50:16 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	print_status(t_philo *philo, char *str)
+void	print_status(t_philo *philo, char *str, const char *color)
 {
 	long int	time;
 
 	time = get_time() - philo->data->start_time;
 	pthread_mutex_lock(&philo->data->print);
-	printf("\e[0;32m %ld %d %s", time, philo->id, str);
+	printf("%s %ld %d %s\n", color, time, philo->id, str);
 	pthread_mutex_lock(&philo->data->m_death);
 	if (philo->data->is_dead == 0)
 	{
@@ -40,9 +40,9 @@ void	ft_usleep(long int time)
 
 void	sleep_think(t_philo *philo)
 {
-	print_status(philo, "is sleeping");
+	print_status(philo, "is sleeping", "\033[0;33m");
 	ft_usleep(philo->data->time_to_sleep);
-	print_status(philo, "is thinking");
+	print_status(philo, "is thinking", "\033[0;36m");
 }
 
 void	check_death(t_philo *philos)
@@ -54,7 +54,7 @@ void	check_death(t_philo *philos)
 		pthread_mutex_lock(&philos->data->m_death);
 		philos->data->is_dead = 0;
 		pthread_mutex_unlock(&philos->data->m_death);
-		print_status(philos, "died");
+		print_status(philos, "died", "\033[0;31m");
 	}
 	else
 		pthread_mutex_unlock(&philos->meal_prot);
