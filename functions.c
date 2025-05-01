@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 15:13:26 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/01 11:31:02 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:25:37 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,31 @@ void	check_death(t_philo *philos)
 	}
 	else
 		pthread_mutex_unlock(&philos->meal_prot);
+}
+
+void	check_meals(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->nb_of_meals)
+	{
+		pthread_mutex_lock(&data->philos[i].count_prot);
+		if (data->philos[i].meals_count < data->nb_of_meals)
+		{
+			pthread_mutex_unlock(&data->philos[i].count_prot);
+			break ;
+		}
+		else
+		{
+			pthread_mutex_unlock(&data->philos[i].count_prot);
+			i++;
+		}
+		if (i == data->nb_of_philos)
+		{
+			pthread_mutex_lock(&data->m_death);
+			data->is_dead;
+			pthread_mutex_unlock(&data->m_death);
+		}
+	}
 }
