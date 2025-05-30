@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 15:13:26 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/01 14:50:16 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/05/30 19:00:46 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_death(t_philo *philos)
 		pthread_mutex_lock(&philos->data->m_death);
 		philos->data->is_dead = 0;
 		pthread_mutex_unlock(&philos->data->m_death);
-		print_status(philos, "died", "\033[0;31m");
+		print_status(philos, "died", "\033[0m");
 	}
 	else
 		pthread_mutex_unlock(&philos->meal_prot);
