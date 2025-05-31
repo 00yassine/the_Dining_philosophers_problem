@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 09:45:12 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/30 19:41:34 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/05/31 19:48:35 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	*routine(void *arg)
 	pthread_mutex_unlock(&philo->meal_prot);
 	while (1)
 	{
+		if (philo->data->is_dead == 0)
+			return (NULL);
 		if (philo->data->nb_of_meals && \
 		philo->meals_count == philo->data->nb_of_meals)
 			return (0);
@@ -41,7 +43,6 @@ int	launch_threads(t_data *data)
 	{
 		if (pthread_create(&data->tid_arr[i], NULL, routine, &data->philos[i]))
 			return (1);
-		pthread_detach(data->tid_arr[i]);
 		usleep(99);
 		i++;
 	}
@@ -52,6 +53,12 @@ int	launch_threads(t_data *data)
 		check_death(&data->philos[i]);
 		i++;
 		i = i % data->nb_of_philos;
+	}
+	i = 0;
+	while (i < data->nb_of_philos)
+	{
+		pthread_join(data->tid_arr[i], NULL);
+		i++;
 	}
 	return (0);
 }
