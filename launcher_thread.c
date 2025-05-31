@@ -6,13 +6,13 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 09:45:12 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/31 19:48:35 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/05/31 23:08:36 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	*routine(void *arg)
+void	*routine(void *arg)
 {
 	t_philo	*philo;
 

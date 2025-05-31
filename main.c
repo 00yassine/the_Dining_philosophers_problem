@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:44:07 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/29 17:43:17 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/05/31 23:11:47 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ static void	free_all(t_data *data)
 		free(data->philos);
 	if (data->tid_arr)
 		free(data->tid_arr);
-	if (data)
-		free(data);
 }
 
 int	main(int ac, char **av)
@@ -62,7 +60,10 @@ int	main(int ac, char **av)
 	else if (launch_threads(data))
 	{
 		free_all(data);
+		free(data);
 		return (1);
 	}
+	free_all(data);
+	free(data);
 	return (0);
 }
