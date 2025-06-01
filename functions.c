@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 15:13:26 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/31 19:45:59 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/06/01 15:50:33 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ void	check_meals(t_data *data)
 			data->is_dead = 0;
 			pthread_mutex_unlock(&data->m_death);
 		}
+		// usleep(500);
 	}
 }

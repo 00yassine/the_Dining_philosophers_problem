@@ -6,7 +6,7 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:06:34 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/04/30 17:35:38 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/06/01 16:01:57 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	init_philos(t_data *data)
 	{
 		pthread_mutex_init(&mutex_arr[i], NULL);
 		data->philos[i].id = i + 1;
-		data->philos[i].last_meal = 0;
+		data->philos[i].last_meal = get_time();
 		data->philos[i].meals_count = 0;
 		data->philos[i].mutex = mutex_arr;
 		data->philos[i].data = data;

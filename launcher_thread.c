@@ -6,11 +6,21 @@
 /*   By: ykabili- <ykabili-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 09:45:12 by ykabili-          #+#    #+#             */
-/*   Updated: 2025/05/31 23:08:36 by ykabili-         ###   ########.fr       */
+/*   Updated: 2025/06/01 15:51:01 by ykabili-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_usleep_(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_time();
+	while ((get_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}
 
 void	*routine(void *arg)
 {
@@ -29,6 +39,7 @@ void	*routine(void *arg)
 			return (0);
 		eat(philo);
 		sleep_think(philo);
+		// ft_usleep_(10);
 	}
 	return (NULL);
 }
@@ -53,6 +64,7 @@ int	launch_threads(t_data *data)
 		check_death(&data->philos[i]);
 		i++;
 		i = i % data->nb_of_philos;
+		// usleep(500);
 	}
 	i = 0;
 	while (i < data->nb_of_philos)
